@@ -18,10 +18,12 @@ def main(
         tokens = [token["text"] for token in eg["tokens"]]
         words, spaces = get_words_and_spaces(tokens, eg["text"])
         doc = Doc(nlp.vocab, words=words, spaces=spaces)
-        doc.ents = [
-            doc.char_span(s["start"], s["end"], label=s["label"])
-            for s in eg.get("spans", [])
-        ]
+        doc.ents = []
+        for s in eg.get("spans", []):
+            try:
+              doc.ents.append(doc.char_span(s["start"], s["end"], label=s["label"]))
+            except:
+              continue   
         doc_bin.add(doc)
     doc_bin.to_disk(output_path)
     print(f"Processed {len(doc_bin)} documents: {output_path.name}")
