@@ -10,7 +10,7 @@ def main(
     input_path: Path = typer.Argument(..., exists=True, dir_okay=False),
     output_path: Path = typer.Argument(..., dir_okay=False),
 ):
-    nlp = spacy.blank("en")
+    nlp = spacy.blank("es")
     doc_bin = DocBin(attrs=["ENT_IOB", "ENT_TYPE"])
     for eg in srsly.read_jsonl(input_path):
         if eg["answer"] != "accept":

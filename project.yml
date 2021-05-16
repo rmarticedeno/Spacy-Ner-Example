@@ -6,8 +6,8 @@ vars:
   config: "config.cfg"
   name: "codestrange_ehealthkd"
   version: "1.0.0"
-  train: "ehealthkd_training"
-  dev: "ehealthkd_eval"
+  train: "training"
+  dev: "develop"
 
 # These are the directories that the project needs. The project CLI will make
 # sure that they always exist.
@@ -18,10 +18,8 @@ directories: ["assets", "training", "configs", "scripts", "corpus", "packages"]
 # 'project assets' command still lets you verify that the checksums match.
 assets:
   - dest: "assets/${vars.train}.jsonl"
-    checksum: "4461081e67d8160cab4624e61448f371"
     description: "JSONL-formatted training data exported from Prodigy, annotated with `DRUG` entities (1477 examples)"
   - dest: "assets/${vars.dev}.jsonl"
-    checksum: "4d730f6132de46fad3f76720ce9794f7"
     description: "JSONL-formatted development data exported from Prodigy, annotated with `DRUG` entities (500 examples)"
 
 # Workflows are sequences of commands (see below) executed in order. You can
